@@ -2,26 +2,26 @@ const express = require('express')
 const router = express.Router()
 
 // Item Model
-const Item = require('../../models/User');
+const User = require('../../models/User');
 
 // @route   GET api/items
 // @desc    Get All Items
 // @access  Public
 router.get('/', (req, res) => {
-  Item.find()
+  User.find()
     .sort({ date: -1 })
-    .then(items => res.json(items));
+    .then(users => res.json(users));
 });
 
 // @route   POST api/items
 // @desc    Create An Item
 // @access  Private
 router.post('/', (req, res) => {
-  const newItem = new Item({
+  const newItem = new User({
     name: req.body.name
   });
 
-  newItem.save().then(item => res.json(item));
+  newItem.save().then(user => res.json(user));
 });
 
 // @route   DELETE api/items/:id
